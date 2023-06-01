@@ -12,7 +12,7 @@ interface DurationSelectorProps {
 
 const generateIncrements = (increment: number, maximum: number) => {
   let currentIncrement = 0;
-  const entries: Array<number | undefined> = [undefined];
+  const entries: Array<number | null> = [null];
   while (currentIncrement <= maximum) {
     entries.push(currentIncrement);
     currentIncrement += increment;
@@ -53,7 +53,7 @@ const DurationSelector = ({
           onValueChange(itemValue)
         }>
         {increments.map(totalMinutes => {
-          if (totalMinutes === undefined) {
+          if (totalMinutes === null) {
             return (
               <Picker.Item
                 key="default"

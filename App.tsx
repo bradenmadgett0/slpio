@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Text, useColorScheme} from 'react-native';
+import {Button, useColorScheme} from 'react-native';
 import styled from '@emotion/native';
 import DurationSelector from './components/DurationSelector';
 
