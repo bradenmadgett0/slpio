@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import {Picker} from '@react-native-picker/picker';
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 
 interface DurationSelectorProps {
   increment: number;
@@ -34,9 +34,21 @@ const DurationSelector = ({
   label,
 }: DurationSelectorProps) => {
   const increments = useMemo(
-    () => generateIncrements(increment, maximumDuration || 24 * 60),
+    () =>
+      generateIncrements(
+        increment,
+        typeof maximumDuration === 'number' ? maximumDuration : 24 * 60,
+      ),
     [increment, maximumDuration],
   );
+
+  useEffect(() => {
+    if (value == null || maximumDuration == null) {
+      return;
+    } else if (value > maximumDuration) {
+      onValueChange(maximumDuration);
+    }
+  }, [maximumDuration, onValueChange, value]);
 
   return (
     <>
@@ -46,8 +58,10 @@ const DurationSelector = ({
           backgroundColor: 'midnightblue',
           borderRadius: 8,
           marginBottom: 24,
+          color: 'white',
         }}
         itemStyle={{color: 'white', fontWeight: '600'}}
+        dropdownIconColor="white"
         selectedValue={value}
         onValueChange={(itemValue: number | undefined) =>
           onValueChange(itemValue)
