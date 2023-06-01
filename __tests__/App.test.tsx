@@ -12,9 +12,11 @@ jest.mock('../utils', () => {
 
 describe('App tests', () => {
   test('App should render with default values and disabled button', () => {
-    const {getByText} = render(<App />);
+    const {getByTestId, getByText} = render(<App />);
     getByText('Duration in bed');
+    getByTestId('Duration in bed_picker');
     getByText('Duration asleep');
+    getByTestId('Duration asleep_picker');
     const calculateButton = getByText('Calculate');
     fireEvent.press(calculateButton);
     expect(mockCalculate).toHaveBeenCalledTimes(0);

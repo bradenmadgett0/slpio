@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import styled from '@emotion/native';
 import {Picker} from '@react-native-picker/picker';
 import React, {useEffect, useMemo} from 'react';
@@ -54,6 +55,7 @@ const DurationSelector = ({
     <>
       {label && <DurationPickerLabel>{label}</DurationPickerLabel>}
       <Picker
+        testID={`${label}_picker`}
         style={{
           backgroundColor: 'midnightblue',
           borderRadius: 8,
