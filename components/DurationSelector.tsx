@@ -49,7 +49,9 @@ const DurationSelector = ({
         }}
         itemStyle={{color: 'white', fontWeight: '600'}}
         selectedValue={value}
-        onValueChange={(itemValue: number | undefined) => onValueChange(itemValue)}>
+        onValueChange={(itemValue: number | undefined) =>
+          onValueChange(itemValue)
+        }>
         {increments.map(totalMinutes => {
           if (totalMinutes === undefined) {
             return (

@@ -47,8 +47,6 @@ function App(): JSX.Element {
           title="Calculate"
           disabled={inBedDuration == null || asleepDuration == null}
         />
-        <Text>{typeof inBedDuration}</Text>
-        <Text>{asleepDuration}</Text>
       </Content>
     </MainView>
   );
